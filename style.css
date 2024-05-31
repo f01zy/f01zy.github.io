@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.step {
+  transition: all 1s ease;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.step h2 {
+  margin-bottom: 5px;
+}
+
+.none {
+  display: none !important;
+}
+
+.none-opacity {
+  opacity: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #fafafa;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: #020202;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 50%;
+  height: max-content;
+  position: relative;
+  transition: all 1s ease;
+}
+
+.container nav {
+  width: 100%;
+  height: auto;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.container nav .line {
+  position: absolute;
+  bottom: -10px;
+  background: #fafafa;
+  width: auto;
+  height: 2px;
+  transition: all .5s ease;
+}
+
+.container nav ul {
+  display: flex;
+}
+
+.container nav ul li {
+  font-size: 18px;
+  position: relative;
+  font-family: "Barlow", sans-serif;
+}
+
+.container nav ul li:not(:first-child) {
+  margin-left: 15px;
+}
+
+.container .about h4 {
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.container .contact .code {
+  margin-top: 10px;
+}
+
+.container .contact .code li:not(:first-child) {
+  margin-top: 1px;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: max-content;
+  }
+
+  .container .about p {
+    width: 250px;
+  }
+}
