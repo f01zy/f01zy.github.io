@@ -9,16 +9,18 @@
   border-radius: 10px;
   z-index: 10;
   position: fixed;
-  padding: 50px 10px;
 }
 
-.post .close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+.post .title {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid #bababa;
+}
+
+.post .content {
+  padding: 10px 10px;
 }
 
 .step {
