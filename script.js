@@ -8,6 +8,12 @@ const TIME = undefined
 const TIME_ELEMENT = document.querySelector(".time")
 const CONTAINER = document.querySelector(".container")
 const SOCIAL_ELEMENTS = CONTACT.querySelectorAll(".social")
+const POSTS = []
+const POST = document.querySelector(".post")
+const JSON_MASTER_KEY = "$2a$10$uhWxn5QOaQAPTPkDm1Hzuu5oWhUs9GP5OOn5K/5GjM1/NQdBr1.Xy"
+const TIME_API_KEY = "481416272e7d443f82fc46232902e3e7"
+const LOADER = document.querySelector(".loader")
+const BLOG = document.querySelector(".blog")
 
 const DISCORD = "https://discordapp.com/users/858285755658666034"
 const TELEGRAM = "https://t.me/aminov_ali"
@@ -74,11 +80,44 @@ const showElement = element => {
 }
 
 window.addEventListener("load", async event => {
-  const TIME = await fetch("https://timezone.abstractapi.com/v1/current_time/?api_key=481416272e7d443f82fc46232902e3e7&location=Moscow", {
+  LOADER.classList.remove("none-opacity")
+
+  const TIME = await fetch(`https://timezone.abstractapi.com/v1/current_time/?api_key=${TIME_API_KEY}&location=Moscow`, {
     method: "GET",
   })
     .then(res => res.json())
     .then(res => res.datetime.split(" ")[1])
+
+  const POSTS = await fetch("https://api.jsonbin.io/v3/b/665afd71acd3cb34a8511098", {
+    headers: {
+      "X-Master-Key": JSON_MASTER_KEY
+    }
+  })
+    .then(res => res.json())
+    .then(res => res.record.posts)
+
+  for (let i = 0; i < POSTS.length; i++) {
+    const div = document.createElement("div")
+    const h3 = document.createElement("h3")
+    const p = document.createElement("p")
+    const post = POSTS[i]
+
+    h3.innerHTML = post.name
+    p.innerHTML = post.content
+    div.append(h3, p)
+
+    div.addEventListener("click", event => {
+      POST.querySelector("h3").innerHTML = h3.innerHTML
+      POST.querySelector("p").innerHTML = p.innerHTML
+      showElement(".post")
+
+      POST.querySelector(".close").addEventListener("click", event => {
+        hideElement(".post")
+      })
+    })
+
+    BLOG.appendChild(div)
+  }
 
   startClock(TIME, TIME_ELEMENT)
 
@@ -87,7 +126,8 @@ window.addEventListener("load", async event => {
     SOCIAL_ELEMENTS[i].innerHTML = SOCIAL[i].label
   }
 
-  CONTAINER.classList.remove("none-opacity")
+  LOADER.classList.add("none-opacity")
+  setTimeout(() => CONTAINER.classList.remove("none-opacity"), 500)
 
   const font = "18px Barlow";
 
@@ -98,11 +138,15 @@ window.addEventListener("load", async event => {
 
   let index = 0;
   LINE.style.width = `${getTextWidth(LINKS[index], font)}px`
+  LINE.style.left = "0px"
 
   for (let i = 0; i < LINKS_ELEMENTS.length; i++) {
     const children = LINKS_ELEMENTS[i]
 
     children.addEventListener("click", event => {
+      const audio = new Audio()
+      audio.src = "./click.mp3"
+      audio.play()
       index = i;
       for (let i = 0; i < LINKS.length; i++) {
         if (i === index) continue

@@ -1,6 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+.post {
+  width: 50%;
+  height: 90vh;
+  background: #020202;
+  border: 2px solid #bababa;
+  border-radius: 10px;
+  z-index: 10;
+  position: fixed;
+  padding: 25px 10px;
+}
+
+.post .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .step {
   transition: all 1s ease;
   transform: translateY(-10px);
@@ -44,9 +64,22 @@ body {
   justify-content: center;
 }
 
+.loader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .5s ease;
+}
+
 .container {
   width: 50%;
-  height: max-content;
+  height: 25%;
   position: relative;
   transition: all 1s ease;
 }
@@ -59,12 +92,12 @@ body {
 }
 
 .container nav .line {
+  transition: all .5s ease;
   position: absolute;
   bottom: -10px;
   background: #fafafa;
   width: auto;
   height: 2px;
-  transition: all .5s ease;
 }
 
 .container nav ul {
@@ -86,6 +119,28 @@ body {
   margin-top: 10px;
 }
 
+.container .blog div {
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 15px;
+  transition: all 1s ease;
+}
+
+.container .blog div h3 {
+  font-weight: 500;
+}
+
+.container .blog div p {
+  width: 99%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .container .contact .code {
   margin-top: 10px;
 }
@@ -94,12 +149,22 @@ body {
   margin-top: 1px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 900px) {
+  .post {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
   .container {
     width: max-content;
   }
 
   .container .about p {
     width: 250px;
+  }
+
+  .container .blog div {
+    width: 70vw;
   }
 }
