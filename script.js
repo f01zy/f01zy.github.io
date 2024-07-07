@@ -82,12 +82,6 @@ const showElement = element => {
 window.addEventListener("load", async event => {
   LOADER.classList.remove("none-opacity")
 
-  // const TIME = await fetch(`https://timezone.abstractapi.com/v1/current_time/?api_key=${TIME_API_KEY}&location=Moscow`, {
-  //   method: "GET",
-  // })
-  //   .then(res => res.json())
-  //   .then(res => res.datetime.split(" ")[1])
-
   const POSTS = await fetch("https://api.jsonbin.io/v3/b/665afd71acd3cb34a8511098", {
     headers: {
       "X-Master-Key": JSON_MASTER_KEY
