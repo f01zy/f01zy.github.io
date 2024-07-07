@@ -11,7 +11,7 @@ const SOCIAL_ELEMENTS = CONTACT.querySelectorAll(".social")
 const POSTS = []
 const POST = document.querySelector(".post")
 const JSON_MASTER_KEY = "$2a$10$uhWxn5QOaQAPTPkDm1Hzuu5oWhUs9GP5OOn5K/5GjM1/NQdBr1.Xy"
-const TIME_API_KEY = "481416272e7d443f82fc46232902e3e7"
+const TIME_API_KEY = ""
 const LOADER = document.querySelector(".loader")
 const BLOG = document.querySelector(".blog")
 
@@ -82,11 +82,11 @@ const showElement = element => {
 window.addEventListener("load", async event => {
   LOADER.classList.remove("none-opacity")
 
-  const TIME = await fetch(`https://timezone.abstractapi.com/v1/current_time/?api_key=${TIME_API_KEY}&location=Moscow`, {
-    method: "GET",
-  })
-    .then(res => res.json())
-    .then(res => res.datetime.split(" ")[1])
+  // const TIME = await fetch(`https://timezone.abstractapi.com/v1/current_time/?api_key=${TIME_API_KEY}&location=Moscow`, {
+  //   method: "GET",
+  // })
+  //   .then(res => res.json())
+  //   .then(res => res.datetime.split(" ")[1])
 
   const POSTS = await fetch("https://api.jsonbin.io/v3/b/665afd71acd3cb34a8511098", {
     headers: {
@@ -119,7 +119,7 @@ window.addEventListener("load", async event => {
     BLOG.appendChild(div)
   }
 
-  startClock(TIME, TIME_ELEMENT)
+  // startClock(TIME, TIME_ELEMENT)
 
   for (let i = 0; i < SOCIAL_ELEMENTS.length; i++) {
     SOCIAL_ELEMENTS[i].setAttribute("href", SOCIAL[i].link)
