@@ -134,21 +134,36 @@ body {
 
 .container .blog div h3 {
   font-weight: 500;
+  font-size: 17px;
 }
 
-.container .blog div p {
-  width: 99%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.container .contact .links {
+  display: flex;
+  margin-top: 15px;
 }
 
-.container .contact .code {
-  margin-top: 10px;
+.container .contact .links a img {
+  height: 30px;
+  width: auto;
 }
 
-.container .contact .code li:not(:first-child) {
-  margin-top: 1px;
+.container .contact .links a:not(:first-child) {
+  margin-left: 15px;
+}
+
+footer {
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+footer a,
+footer p {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 @media (max-width: 900px) {

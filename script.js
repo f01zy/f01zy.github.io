@@ -1,27 +1,25 @@
-const NAV = document.querySelector("nav")
-const LINE = NAV.querySelector(".line")
-const LINKS_ELEMENTS = NAV.querySelector("ul").children
-const CONTACT = document.querySelector(".contact")
-const LINKS = []
-const LINKS_WIDTH = []
-const TIME = undefined
-const TIME_ELEMENT = document.querySelector(".time")
-const CONTAINER = document.querySelector(".container")
-const SOCIAL_ELEMENTS = CONTACT.querySelectorAll(".social")
-const POSTS = []
-const POST = document.querySelector(".post")
-const JSON_MASTER_KEY = "$2a$10$uhWxn5QOaQAPTPkDm1Hzuu5oWhUs9GP5OOn5K/5GjM1/NQdBr1.Xy"
-const TIME_API_KEY = ""
-const LOADER = document.querySelector(".loader")
-const BLOG = document.querySelector(".blog")
-
-const DISCORD = "https://discordapp.com/users/858285755658666034"
-const TELEGRAM = "https://t.me/aminov_ali"
-const GITHUB = "https://github.com/f01zy"
-const SOCIAL = [
-  { label: "discord", link: DISCORD },
-  { label: "telegram", link: TELEGRAM },
-  { label: "github", link: GITHUB }
+const nav = document.querySelector("nav")
+const line = nav.querySelector(".line")
+const linksElements = nav.querySelector("ul").children
+const contact = document.querySelector(".contact")
+const links = []
+const linksWidth = []
+const timeElement = document.querySelector(".time")
+const container = document.querySelector(".container")
+const socialElements = contact.querySelectorAll(".social")
+const posts = []
+const postElement = document.querySelector(".post")
+const jsonMasterKey = "$2a$10$uhWxn5QOaQAPTPkDm1Hzuu5oWhUs9GP5OOn5K/5GjM1/NQdBr1.Xy"
+const loader = document.querySelector(".loader")
+const blog = document.querySelector(".blog")
+const source = document.querySelector(".source")
+const discord = "https://discordapp.com/users/858285755658666034"
+const telegram = "https://t.me/aminov_ali"
+const github = "https://github.com/f01zy"
+const social = [
+  { label: "discord", link: discord },
+  { label: "telegram", link: telegram },
+  { label: "github", link: github }
 ]
 
 const formatTime = (time) => {
@@ -80,81 +78,78 @@ const showElement = element => {
 }
 
 window.addEventListener("load", async event => {
-  LOADER.classList.remove("none-opacity")
+  loader.classList.remove("none-opacity")
 
-  const POSTS = await fetch("https://api.jsonbin.io/v3/b/665afd71acd3cb34a8511098", {
-    headers: {
-      "X-Master-Key": JSON_MASTER_KEY
-    }
-  })
-    .then(res => res.json())
-    .then(res => res.record.posts)
+  source.setAttribute("href", `${github}/${github.split("/")[3]}.github.io`)
 
-  for (let i = 0; i < POSTS.length; i++) {
+  const posts = await fetch("https://api.jsonbin.io/v3/b/665afd71acd3cb34a8511098", { headers: { "X-Master-Key": jsonMasterKey } }).then(res => res.json()).then(res => res.record.posts)
+  const time = new Date(Date.parse(await fetch("http://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+  const seconds = time.getSeconds();
+
+  startClock(`${hours}:${minutes}:${seconds}`, timeElement)
+
+  for (let i = 0; i < posts.length; i++) {
     const div = document.createElement("div")
     const h3 = document.createElement("h3")
-    const p = document.createElement("p")
-    const post = POSTS[i]
+    const post = posts[i]
 
     h3.innerHTML = post.name
-    p.innerHTML = post.content
-    div.append(h3, p)
+    div.append(h3)
 
     div.addEventListener("click", event => {
-      POST.querySelector("h3").innerHTML = h3.innerHTML
-      POST.querySelector("p").innerHTML = p.innerHTML
+      postElement.querySelector("h3").innerHTML = h3.innerHTML
+      postElement.querySelector("p").innerHTML = post.content
       showElement(".post")
 
-      POST.querySelector(".close").addEventListener("click", event => {
+      postElement.querySelector(".close").addEventListener("click", event => {
         hideElement(".post")
       })
     })
 
-    BLOG.appendChild(div)
+    blog.appendChild(div)
   }
 
-  // startClock(TIME, TIME_ELEMENT)
-
-  for (let i = 0; i < SOCIAL_ELEMENTS.length; i++) {
-    SOCIAL_ELEMENTS[i].setAttribute("href", SOCIAL[i].link)
-    SOCIAL_ELEMENTS[i].innerHTML = SOCIAL[i].label
+  for (let i = 0; i < socialElements.length; i++) {
+    socialElements[i].setAttribute("href", social[i].link)
   }
 
-  LOADER.classList.add("none-opacity")
-  setTimeout(() => CONTAINER.classList.remove("none-opacity"), 500)
+  loader.classList.add("none-opacity")
+  setTimeout(() => container.classList.remove("none-opacity"), 500)
 
   const font = "18px Barlow";
 
-  for (const children of LINKS_ELEMENTS) {
-    LINKS.push(children.innerHTML)
-    LINKS_WIDTH.push(getTextWidth(children.innerHTML, font))
+  for (const children of linksElements) {
+    links.push(children.innerHTML)
+    linksWidth.push(getTextWidth(children.innerHTML, font))
   }
 
   let index = 0;
-  LINE.style.width = `${getTextWidth(LINKS[index], font)}px`
-  LINE.style.left = "0px"
+  line.style.width = `${getTextWidth(links[index], font)}px`
+  line.style.left = "0px"
 
-  for (let i = 0; i < LINKS_ELEMENTS.length; i++) {
-    const children = LINKS_ELEMENTS[i]
+  for (let i = 0; i < linksElements.length; i++) {
+    const children = linksElements[i]
 
     children.addEventListener("click", event => {
       const audio = new Audio()
       audio.src = "./click.mp3"
       audio.play()
       index = i;
-      for (let i = 0; i < LINKS.length; i++) {
+      for (let i = 0; i < links.length; i++) {
         if (i === index) continue
-        hideElement(`.${LINKS[i].toLowerCase()}`)
+        hideElement(`.${links[i].toLowerCase()}`)
       }
       let left = 0;
       for (let i = 0; i < index; i++) {
-        left += LINKS_WIDTH[i]
+        left += linksWidth[i]
         left += 15
       }
-      LINE.style.width = `${getTextWidth(LINKS[index], font)}px`
-      LINE.style.left = `${left}px`
+      line.style.width = `${getTextWidth(links[index], font)}px`
+      line.style.left = `${left}px`
       setTimeout(() => {
-        showElement(`.${LINKS[index].toLowerCase()}`)
+        showElement(`.${links[index].toLowerCase()}`)
       }, 1000)
     })
   }
