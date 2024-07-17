@@ -83,7 +83,7 @@ window.addEventListener("load", async event => {
   source.setAttribute("href", `${github}/${github.split("/")[3]}.github.io`)
 
   const posts = await fetch("https://api.jsonbin.io/v3/b/665afd71acd3cb34a8511098", { headers: { "X-Master-Key": jsonMasterKey } }).then(res => res.json()).then(res => res.record.posts)
-  const time = new Date(Date.parse(await fetch("http://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
+  const time = new Date(Date.parse(await fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
   const hours = time.getHours();
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
