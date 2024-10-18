@@ -79,6 +79,9 @@ const showElement = element => {
 window.addEventListener("load", async event => {
   loader.classList.remove("none-opacity")
 
+  const audio = new Audio()
+  audio.src = "./click.mp3"
+
   source.setAttribute("href", `${github}/${github.split("/")[3]}.github.io`)
 
   const posts = await fetch("https://api.jsonbin.io/v3/b/669aca6dacd3cb34a8687e31").then(res => res.json()).then(res => res.record.posts)
@@ -140,8 +143,6 @@ window.addEventListener("load", async event => {
     const children = linksElements[i]
 
     children.addEventListener("click", event => {
-      const audio = new Audio()
-      audio.src = "./click.mp3"
       audio.play()
       index = i;
       for (let i = 0; i < links.length; i++) {
