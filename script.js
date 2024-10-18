@@ -85,14 +85,13 @@ window.addEventListener("load", async event => {
   let time = undefined
   try {
     time = new Date(Date.parse(await fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
-  } catch (error) {
-
-  }
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
-  const seconds = time.getSeconds();
+  } catch (error) { }
 
   if (time) {
+    const hours = time.getHours();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+
     startClock(`${hours}:${minutes}:${seconds}`, timeElement)
   } else {
     timeElement.innerHTML = "cannot get time (API error)"
