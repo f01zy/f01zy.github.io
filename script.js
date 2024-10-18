@@ -82,12 +82,21 @@ window.addEventListener("load", async event => {
   source.setAttribute("href", `${github}/${github.split("/")[3]}.github.io`)
 
   const posts = await fetch("https://api.jsonbin.io/v3/b/669aca6dacd3cb34a8687e31").then(res => res.json()).then(res => res.record.posts)
-  const time = new Date(Date.parse(await fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
+  let time = undefined
+  try {
+    time = new Date(Date.parse(await fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
+  } catch (error) {
+
+  }
   const hours = time.getHours();
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
-  startClock(`${hours}:${minutes}:${seconds}`, timeElement)
+  if (time) {
+    startClock(`${hours}:${minutes}:${seconds}`, timeElement)
+  } else {
+    timeElement.innerHTML = "cannot get time (API error)"
+  }
 
   for (let i = 0; i < posts.length; i++) {
     const div = document.createElement("div")
