@@ -63,6 +63,7 @@ ul {
 ::-webkit-scrollbar {
   width: 5px;
   background: #666;
+  margin-left: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -141,7 +142,6 @@ body {
   overflow-x: hidden;
   height: 200px;
   position: relative;
-  padding-right: 15px;
 }
 
 .container .projects div:last-child {
