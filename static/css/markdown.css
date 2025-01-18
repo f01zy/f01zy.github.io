@@ -1,0 +1,117 @@
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  margin-top: .7em;
+  margin-bottom: .5em;
+}
+
+.content h1 {
+  font-size: 2.2em;
+}
+
+.content h2 {
+  font-size: 1.8em;
+}
+
+.content h3 {
+  font-size: 1.5em;
+}
+
+.content h4 {
+  font-size: 1.3em;
+}
+
+.content h5 {
+  font-size: 1.1em;
+}
+
+.content h6 {
+  font-size: 1em;
+}
+
+.content p {
+  margin-bottom: 1em;
+}
+
+.content ul,
+.content ol {
+  margin: 1em 0;
+  padding-left: 2em;
+}
+
+.content ul {
+  list-style: disc !important;
+}
+
+.content ol {
+  list-style: decimal !important;
+}
+
+.content li {
+  margin-bottom: 0.3em;
+}
+
+.content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+  color: #b3b3b3;
+}
+
+.content code {
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.content pre {
+  background-color: var(--secondary-color);
+  padding: 1em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin-bottom: 1.2em;
+}
+
+.content pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.9em;
+  color: var(--white);
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 5px;
+}
+
+.content hr {
+  border: none;
+  border-top: 1px solid var(--hover-color);
+  margin: 2em 0;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.2em;
+}
+
+.content table th,
+.content table td {
+  border: 1px solid var(--hover-color);
+  padding: 0.5em;
+}
+
+.content table th {
+  background-color: var(--secondary-color);
+  font-weight: bold;
+}

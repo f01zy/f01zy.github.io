@@ -16,7 +16,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px 10px;
+  height: 40px;
   border-bottom: 1px solid #bababa;
+}
+
+.post .title h3 {
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .post .content {
@@ -31,7 +37,7 @@
 }
 
 .step h2 {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .none {
@@ -52,6 +58,15 @@ ul {
   box-sizing: border-box;
   color: #fafafa;
   font-family: "Open Sans", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: #666;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
 }
 
 body {
@@ -121,6 +136,45 @@ body {
   margin-top: 10px;
 }
 
+.container .projects {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 300px;
+  position: relative;
+  width: 75%;
+  padding-right: 15px;
+}
+
+.container .projects div {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #bababa;
+  margin-top: 20px;
+}
+
+.container .projects div img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.container .projects div a {
+  font-size: 20px;
+}
+
+.container .projects div p {
+  margin-top: 10px;
+}
+
+.container .projects div h4 {
+  width: max-content;
+  padding: 3px 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
 .container .blog div {
   width: auto;
   height: auto;
@@ -130,11 +184,19 @@ body {
   position: relative;
   margin-top: 15px;
   transition: all 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .container .blog div h3 {
   font-weight: 500;
   font-size: 17px;
+}
+
+.container .blog div h4 {
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .container .contact .links {
@@ -149,21 +211,6 @@ body {
 
 .container .contact .links a:not(:first-child) {
   margin-left: 15px;
-}
-
-footer {
-  position: absolute;
-  bottom: 15px;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-footer a,
-footer p {
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 @media (max-width: 900px) {

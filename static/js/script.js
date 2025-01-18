@@ -9,9 +9,11 @@ const container = document.querySelector(".container")
 const socialElements = contact.querySelectorAll(".social")
 const posts = []
 const postElement = document.querySelector(".post")
+const content = postElement.querySelector(".content")
 const loader = document.querySelector(".loader")
 const blog = document.querySelector(".blog")
-const source = document.querySelector(".source")
+const projectsContainer = document.querySelector(".projects")
+
 const discord = "https://discordapp.com/users/858285755658666034"
 const telegram = "https://t.me/aminov_ali"
 const github = "https://github.com/f01zy"
@@ -20,6 +22,15 @@ const social = [
   { label: "telegram", link: telegram },
   { label: "github", link: github }
 ]
+
+const tagsColors = {
+  "paused": "red"
+}
+
+const getHTMLFromMarkdown = (text) => {
+  const converter = new showdown.Converter()
+  return converter.makeHtml(text)
+}
 
 const formatTime = (time) => {
   return time < 10 ? "0" + time : time;
@@ -80,37 +91,37 @@ window.addEventListener("load", async event => {
   loader.classList.remove("none-opacity")
 
   const audio = new Audio()
-  audio.src = "./click.mp3"
+  audio.src = "./public/click.mp3"
+  audio.preload = "auto"
 
-  source.setAttribute("href", `${github}/${github.split("/")[3]}.github.io`)
+  const posts = await fetch("https://api.jsonbin.io/v3/b/669aca6dacd3cb34a8687e31")
+    .then(res => res.json())
+    .then(res => res.record.posts)
 
-  const posts = await fetch("https://api.jsonbin.io/v3/b/669aca6dacd3cb34a8687e31").then(res => res.json()).then(res => res.record.posts)
-  let time = undefined
-  try {
-    time = new Date(Date.parse(await fetch("https://worldtimeapi.org/api/timezone/Europe/Moscow").then(res => res.json()).then(res => res.datetime)))
-  } catch (error) { }
+  const currentTime = new Date()
+  const options = { timeZone: "UTC", timeZoneName: "short" }
+  const utcOffset = 4
+  const time = new Date(currentTime.getTime() + utcOffset * 60 * 60 * 1000).toLocaleString("ru-RU", options)
+  const timeArray = time.split(",")[1].trim().split(":")
+  const hours = parseInt(timeArray[0])
+  const minutes = parseInt(timeArray[1])
+  const seconds = parseInt(timeArray[2])
 
-  if (time) {
-    const hours = time.getHours();
-    const minutes = time.getMinutes();
-    const seconds = time.getSeconds();
-
-    startClock(`${hours}:${minutes}:${seconds}`, timeElement)
-  } else {
-    timeElement.innerHTML = "cannot get time (API error)"
-  }
+  startClock(`${hours}:${minutes}:${seconds}`, timeElement)
 
   for (let i = 0; i < posts.length; i++) {
     const div = document.createElement("div")
     const h3 = document.createElement("h3")
+    const h4 = document.createElement("h4")
     const post = posts[i]
 
     h3.innerHTML = post.name
-    div.append(h3)
+    h4.innerHTML = post.date
+    div.append(h3, h4)
 
     div.addEventListener("click", event => {
       postElement.querySelector("h3").innerHTML = h3.innerHTML
-      postElement.querySelector("p").innerHTML = post.content
+      content.innerHTML = getHTMLFromMarkdown(post.content)
       showElement(".post")
 
       postElement.querySelector(".close").addEventListener("click", event => {
@@ -119,6 +130,29 @@ window.addEventListener("load", async event => {
     })
 
     blog.appendChild(div)
+  }
+
+  const projects = await fetch("https://api.jsonbin.io/v3/b/678b0c18e41b4d34e4793557")
+    .then(res => res.json())
+    .then(res => res.record.projects)
+
+  for (const project of projects) {
+    const div = document.createElement("div")
+    const img = document.createElement("img")
+    const a = document.createElement("a")
+    const p = document.createElement("p")
+    const h4 = document.createElement("h4")
+
+    img.src = project.images[0]
+    a.innerHTML = project.name
+    a.href = project.github[0]
+    h4.innerHTML = project.status
+    h4.style.border = `2px solid ${tagsColors[project.status]}`
+    h4.style.color = tagsColors[project.status]
+    p.innerHTML = project.description
+
+    div.append(img, a, p, h4)
+    projectsContainer.append(div)
   }
 
   for (let i = 0; i < socialElements.length; i++) {
