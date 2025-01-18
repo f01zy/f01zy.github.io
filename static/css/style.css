@@ -97,7 +97,7 @@ body {
 
 .container {
   width: 50%;
-  height: max-content;
+  height: 25%;
   position: relative;
   transition: all 1s ease;
 }
@@ -161,10 +161,11 @@ body {
 .container .projects div div {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .container .projects div div a {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .container .projects div div h4 {
@@ -173,10 +174,11 @@ body {
   border-radius: 5px;
   font-weight: 400;
   margin-left: 10px;
+  font-size: 15px;
 }
 
 .container .projects div p {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .container .blog div {
