@@ -100,7 +100,7 @@ window.addEventListener("load", async event => {
 
   const currentTime = new Date()
   const options = { timeZone: "UTC", timeZoneName: "short" }
-  const utcOffset = 4
+  const utcOffset = 3
   const time = new Date(currentTime.getTime() + utcOffset * 60 * 60 * 1000).toLocaleString("ru-RU", options)
   const timeArray = time.split(",")[1].trim().split(":")
   const hours = parseInt(timeArray[0])
