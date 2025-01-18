@@ -139,13 +139,12 @@ body {
 .container .projects {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 400px;
+  height: 200px;
   position: relative;
-  width: 75%;
   padding-right: 15px;
 }
 
-.container .projects div {
+.container .projects div:last-child {
   width: 100%;
   padding: 10px 10px;
   border-radius: 5px;
@@ -159,20 +158,25 @@ body {
   margin-bottom: 10px;
 }
 
-.container .projects div a {
+.container .projects div div {
+  display: flex;
+  align-items: center;
+}
+
+.container .projects div div a {
   font-size: 20px;
+}
+
+.container .projects div div h4 {
+  width: max-content;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-weight: 400;
+  margin-left: 10px;
 }
 
 .container .projects div p {
   margin-top: 10px;
-}
-
-.container .projects div h4 {
-  width: max-content;
-  padding: 3px 10px;
-  border-radius: 5px;
-  margin-top: 10px;
-  font-weight: 400;
 }
 
 .container .blog div {
@@ -216,10 +220,6 @@ body {
 @media (max-width: 900px) {
   .post {
     width: 90%;
-  }
-
-  .container .projects {
-    width: 100%;
   }
 }
 

@@ -138,6 +138,7 @@ window.addEventListener("load", async event => {
 
   for (const project of projects) {
     const div = document.createElement("div")
+    const div2 = document.createElement("div")
     const img = document.createElement("img")
     const a = document.createElement("a")
     const p = document.createElement("p")
@@ -151,7 +152,8 @@ window.addEventListener("load", async event => {
     h4.style.color = tagsColors[project.status]
     p.innerHTML = project.description
 
-    div.append(img, a, p, h4)
+    div2.append(a, h4)
+    div.append(div2, p)
     projectsContainer.append(div)
   }
 
