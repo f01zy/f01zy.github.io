@@ -96,7 +96,7 @@ body {
 
 .container {
   width: 50%;
-  height: 25%;
+  height: max-content;
   position: relative;
   transition: all 1s ease;
 }
@@ -139,7 +139,7 @@ body {
 .container .projects {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 300px;
+  height: 400px;
   position: relative;
   width: 75%;
   padding-right: 15px;
@@ -216,6 +216,10 @@ body {
 @media (max-width: 900px) {
   .post {
     width: 90%;
+  }
+
+  .container .projects {
+    width: 100%;
   }
 }
 
