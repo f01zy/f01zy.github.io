@@ -137,52 +137,6 @@ body {
   margin-top: 10px;
 }
 
-.container .projects {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 300px;
-  position: relative;
-  padding-right: 10px;
-}
-
-.container .projects .project {
-  width: 100%;
-  padding: 10px 10px;
-  border-radius: 5px;
-  border: 1px solid #bababa;
-  margin-top: 20px;
-  display: flex;
-}
-
-.container .projects .project img {
-  width: 40%;
-  margin-right: 10px;
-  height: auto;
-}
-
-.container .projects .project div div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.container .projects .project div div a {
-  font-size: 18px;
-}
-
-.container .projects .project div div h4 {
-  width: max-content;
-  padding: 3px 10px;
-  border-radius: 5px;
-  font-weight: 400;
-  margin-left: 10px;
-  font-size: 15px;
-}
-
-.container .projects div p {
-  margin-top: 10px;
-}
-
 .container .blog div {
   width: auto;
   height: auto;

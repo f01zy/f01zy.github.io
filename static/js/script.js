@@ -12,7 +12,6 @@ const postElement = document.querySelector(".post")
 const content = postElement.querySelector(".content")
 const loader = document.querySelector(".loader")
 const blog = document.querySelector(".blog")
-const projectsContainer = document.querySelector(".projects")
 
 const discord = "https://discordapp.com/users/858285755658666034"
 const telegram = "https://t.me/aminov_ali"
@@ -22,11 +21,6 @@ const social = [
   { label: "telegram", link: telegram },
   { label: "github", link: github }
 ]
-
-const tagsColors = {
-  "paused": "red",
-  "development": "yellow"
-}
 
 const getHTMLFromMarkdown = (text) => {
   const converter = new showdown.Converter()
@@ -131,36 +125,6 @@ window.addEventListener("load", async event => {
     })
 
     blog.appendChild(div)
-  }
-
-  const projects = await fetch("https://api.jsonbin.io/v3/b/678b0c18e41b4d34e4793557")
-    .then(res => res.json())
-    .then(res => res.record.projects)
-
-  for (const project of projects) {
-    const div = document.createElement("div")
-    const div2 = document.createElement("div")
-    const div3 = document.createElement("div")
-    const img = document.createElement("img")
-    const a = document.createElement("a")
-    const p = document.createElement("p")
-    const h4 = document.createElement("h4")
-
-    img.src = project.images[0]
-    a.innerHTML = project.name
-    a.href = project.github[0]
-    h4.innerHTML = project.status
-    h4.style.border = `2px solid ${tagsColors[project.status]}`
-    h4.style.color = tagsColors[project.status]
-    p.innerHTML = project.description
-
-    div3.append(a, h4)
-    div2.append(div3, p)
-    div.append(img, div2)
-
-    div.className = "project"
-
-    projectsContainer.append(div)
   }
 
   for (let i = 0; i < socialElements.length; i++) {
