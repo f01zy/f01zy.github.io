@@ -24,7 +24,8 @@ const social = [
 ]
 
 const tagsColors = {
-  "paused": "red"
+  "paused": "red",
+  "development": "yellow"
 }
 
 const getHTMLFromMarkdown = (text) => {
@@ -139,6 +140,7 @@ window.addEventListener("load", async event => {
   for (const project of projects) {
     const div = document.createElement("div")
     const div2 = document.createElement("div")
+    const div3 = document.createElement("div")
     const img = document.createElement("img")
     const a = document.createElement("a")
     const p = document.createElement("p")
@@ -152,8 +154,12 @@ window.addEventListener("load", async event => {
     h4.style.color = tagsColors[project.status]
     p.innerHTML = project.description
 
-    div2.append(a, h4)
-    div.append(div2, p)
+    div3.append(a, h4)
+    div2.append(div3, p)
+    div.append(img, div2)
+
+    div.className = "project"
+
     projectsContainer.append(div)
   }
 

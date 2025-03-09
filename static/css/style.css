@@ -140,35 +140,37 @@ body {
 .container .projects {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 200px;
+  height: 300px;
   position: relative;
+  padding-right: 10px;
 }
 
-.container .projects div:last-child {
+.container .projects .project {
   width: 100%;
   padding: 10px 10px;
   border-radius: 5px;
   border: 1px solid #bababa;
   margin-top: 20px;
+  display: flex;
 }
 
-.container .projects div img {
-  width: 100%;
+.container .projects .project img {
+  width: 40%;
+  margin-right: 10px;
   height: auto;
-  margin-bottom: 10px;
 }
 
-.container .projects div div {
+.container .projects .project div div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.container .projects div div a {
-  font-size: 17px;
+.container .projects .project div div a {
+  font-size: 18px;
 }
 
-.container .projects div div h4 {
+.container .projects .project div div h4 {
   width: max-content;
   padding: 3px 10px;
   border-radius: 5px;
@@ -178,7 +180,7 @@ body {
 }
 
 .container .projects div p {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .container .blog div {
