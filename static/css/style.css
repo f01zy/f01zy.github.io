@@ -97,7 +97,7 @@ body {
 
 .container {
   width: 50%;
-  height: 25%;
+  height: max-content;
   position: relative;
   transition: all 1s ease;
 }
