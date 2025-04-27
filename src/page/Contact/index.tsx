@@ -8,7 +8,7 @@ import styles from "@/page/Contact/styles.module.scss"
 const Contact = () => {
   const { theme } = useTheme()
 
-  const code = `const contacts: Record<string, string> = {\n\tgithub: "https://github.com/f01zy",\n\ttelegram: "https://t.me/aminov_ali",\n\tdiscord: "https://discord.com/users/858285755658666034"\n};`
+  const code = `\n\n\n\nconst contacts: Record<string, string> = {\n\tgithub: "https://github.com/f01zy",\n\ttelegram: "https://t.me/aminov_ali",\n\tdiscord: "https://discord.com/users/858285755658666034"\n};\n\n\n\n`
 
   return <div className={`w-full h-full flex items-center justify-center ${styles.contact}`}>
     <div className={styles.code}>
