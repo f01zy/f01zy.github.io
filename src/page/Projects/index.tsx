@@ -22,18 +22,22 @@ const Projects = () => {
       })
   }, [])
 
-  return <div className={`w-full h-screen flex items-center justify-center ${styles.projects}`}>
-    <div className={styles.grid}>
-      {
-        projects.map(el => (
-          <Link href={el.github}>
-            <Card maxTilt={10} className="bg-gray-500" style={{ width: "fit-content", height: "fit-content", border: "2px solid gray" }}>
-              <Image src={el.images[0]} alt={el.name} width={400} height={100} quality={100} />
-            </Card>
-          </Link>
-        ))
-      }
-    </div>
+  return <div className={`w-full h-full flex items-center justify-center ${styles.projects}`}>
+    {
+      projects.length == 0 ?
+        <Image src={"/loader.svg"} alt="Loader" width={30} height={30} priority /> :
+        <div className={styles.grid}>
+          {
+            projects.map(el => (
+              <Link href={el.github}>
+                <Card maxTilt={10} className="bg-gray-500" style={{ width: "fit-content", height: "fit-content", border: "2px solid gray" }}>
+                  <Image src={el.images[0]} alt={el.name} width={400} height={100} quality={100} />
+                </Card>
+              </Link>
+            ))
+          }
+        </div>
+    }
   </div>
 }
 

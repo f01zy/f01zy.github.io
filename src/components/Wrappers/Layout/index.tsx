@@ -17,7 +17,11 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
       <Navigation />
       <Breadcrumbs />
       <ThemeButton className="fixed bottom-6 right-6 z-[1]" />
-      {children}
+      <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ width: "100%", height: "calc(100vh - 180px)", position: "relative" }}>
+          {children}
+        </div>
+      </div>
     </LimitedHeight>
   </Providers>
 }

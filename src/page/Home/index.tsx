@@ -14,8 +14,8 @@ const Home = () => {
   const isAboutTyping = useAppSelector(s => s.utils.isAboutTyping)
   const speed = 80
 
-  return <div className={`w-full h-screen flex items-center justify-center ${styles.home}`}>
-    <div style={{ width: "470px", height: "200px", display: "flex" }} className={styles.container}>
+  return <div className={`w-full h-full flex items-center justify-center ${styles.home}`}>
+    <div className={styles.container}>
       <Image src={avatar} alt="Avatar" width={200} height={200} quality={100} priority style={{ borderRadius: "8px", marginRight: "20px" }} />
       <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
         <div>

@@ -7,7 +7,7 @@ import { useAppSelector } from "@/hooks/selector.hook";
 const About = () => {
   const isAboutTyping = useAppSelector(s => s.utils.isAboutTyping);
 
-  return <div className="w-full h-screen flex items-center justify-center">
+  return <div className="w-full h-full flex items-center justify-center">
     <div className="w-2/3">
       {!isAboutTyping && (
         <>

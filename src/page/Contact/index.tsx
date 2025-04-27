@@ -3,14 +3,15 @@
 import useTheme from "@/hooks/theme.hook";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import styles from "@/page/Contact/styles.module.scss"
 
 const Contact = () => {
   const { theme } = useTheme()
 
   const code = `const contacts: Record<string, string> = {\n\tgithub: "https://github.com/f01zy",\n\ttelegram: "https://t.me/aminov_ali",\n\tdiscord: "https://discord.com/users/858285755658666034"\n};`
 
-  return <div className="w-full h-screen flex items-center justify-center">
-    <div className="w-2/3">
+  return <div className={`w-full h-full flex items-center justify-center ${styles.contact}`}>
+    <div className={styles.code}>
       <SyntaxHighlighter
         language="typescript"
         style={a11yDark}
