@@ -1,0 +1,3 @@
+export const avatar = "https://avatars.githubusercontent.com/u/130757915"
+export const about = "I am a programmer from Russia. I have two years of experience in web development. Now I have moved on to studying hardware because I am interested in how the device works at the hardware level. I am always open to new ideas and ready to collaborate on interesting projects."
+export const projectsJsonBinUrl = "https://api.jsonbin.io/v3/b/678b0c18e41b4d34e4793557"

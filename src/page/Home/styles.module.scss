@@ -1,0 +1,18 @@
+.home {
+  .container {
+    @media(max-width: 600px) {
+      display: block !important;
+      width: 300px !important;
+      height: fit-content !important;
+
+      img {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        margin-top: 20px;
+      }
+    }
+  }
+}
