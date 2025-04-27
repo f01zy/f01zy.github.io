@@ -20,11 +20,6 @@ const Navigation = () => {
       link: "/",
     },
     {
-      id: "work",
-      icon: <FiCode className="w-5 h-5" />,
-      link: "/projects",
-    },
-    {
       id: "about",
       icon: <FiUser className="w-5 h-5" />,
       link: "/about",
