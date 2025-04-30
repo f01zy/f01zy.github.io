@@ -20,7 +20,7 @@ const ThemeButton: FC<Props> = (props) => {
         bg-amber-100 dark:bg-indigo-900
         shadow-lg dark:shadow-md dark:shadow-indigo-900/50
         border border-amber-300 dark:border-indigo-700
-        flex items-center justify-center
+        flex items-center justify-center z-[2]
       `}
   >
     <motion.div

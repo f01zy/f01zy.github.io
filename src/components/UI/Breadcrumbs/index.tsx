@@ -10,7 +10,7 @@ type TPaths = Array<{ name: string; path: string }>
 const Breadcrumbs = () => {
   const [paths, setPaths] = useState<TPaths>([])
   const pathname = usePathname()
-  const { isAboutTyping, isLimitedHeight } = useAppSelector(s => s.utils)
+  const { isAboutTyping } = useAppSelector(s => s.utils)
 
   useEffect(() => {
     if (!pathname) return
@@ -33,7 +33,7 @@ const Breadcrumbs = () => {
     ])
   }, [pathname])
 
-  return !isAboutTyping && <div className={`flex items-center gap-2 text-sm fixed top-0 w-full p-10`}>
+  return <div className={`flex h-[15vh] px-10 items-center gap-2 text-sm w-full transition-opacity duration-300 ${isAboutTyping ? "opacity-0" : "opacity-100"}`}>
     {paths.map((item, index) => (
       <Fragment key={item.path}>
         <Link

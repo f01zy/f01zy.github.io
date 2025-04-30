@@ -14,13 +14,13 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
     <LimitedHeight>
       <Background />
       <AboutTyping />
-      <Navigation />
-      <Breadcrumbs />
-      <ThemeButton className="fixed bottom-6 right-6 z-[1]" />
-      <div style={{ width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ width: "100%", height: "calc(100vh - 180px)", position: "relative" }}>
+      <ThemeButton className="fixed bottom-4 right-6 z-[1]" />
+      <div className="w-full h-screen">
+        <Breadcrumbs />
+        <div className="w-full h-[72vh] flex items-center justify-center">
           {children}
         </div>
+        <Navigation />
       </div>
     </LimitedHeight>
   </Providers>

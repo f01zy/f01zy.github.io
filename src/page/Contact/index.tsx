@@ -1,26 +1,37 @@
-"use client";
+"use client"
 
-import useTheme from "@/hooks/theme.hook";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import styles from "@/page/Contact/styles.module.scss"
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const Contact = () => {
-  const { theme } = useTheme()
+  const code = `
+    const contacts: Record<string, string | string[]> = {
+      \tgithub: "https://github.com/f01zy",
+      \ttelegram: "https://t.me/aminov_ali",
+      \tdiscord: "https://discord.com/users/858285755658666034",
+      \temail: [
+      \t\t"016aminovali@gmail.com",
+      \t\t"aminovali015@icloud.com"
+      \t]
+      };
 
-  const code = `\n\n\n\nconst contacts: Record<string, string> = {\n\tgithub: "https://github.com/f01zy",\n\ttelegram: "https://t.me/aminov_ali",\n\tdiscord: "https://discord.com/users/858285755658666034"\n};\n\n\n\n`
+      const social: Record<string, string> = {
+      \tleetcode: "https://leetcode.com/u/f01zy/",
+      \tanilist: "https://anilist.co/user/f01zy/"
+    };
+  `
 
-  return <div className={`w-full h-full flex items-center justify-center ${styles.contact}`}>
-    <div className={styles.code}>
+  return <div>
+    <div style={{ width: "90vw" }}>
       <SyntaxHighlighter
         language="typescript"
         style={a11yDark}
         customStyle={{
-          padding: "20px",
-          background: "none",
-          backdropFilter: "blur(10px)",
-          borderRadius: "12px",
-          border: "2px solid #444",
+          background: "transparent",
+          backdropFilter: "blur(200px)",
+          border: "1px solid #fff",
+          padding: "15px",
+          borderRadius: "8px",
           fontSize: "15px",
         }}
         showLineNumbers={true}
