@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiHome, FiUser, FiMail } from "react-icons/fi";
+import ThemeButton from "../ToggleTheme";
 
 const Navigation = () => {
   const tabs = [
@@ -35,7 +36,7 @@ const Navigation = () => {
   }, [pathname]);
 
   return (
-    <div className={`z-[1] w-full h-[13vh] flex justify-center items-center transition-opacity duration-300 ease-linear ${isAboutTyping ? "opacity-0" : "opacity-100"
+    <div className={`relative z-[1] w-full h-[13vh] flex justify-center items-center transition-opacity duration-300 ease-linear ${isAboutTyping ? "opacity-0" : "opacity-100"
       }`}>
       <motion.nav
         initial={{ y: 20, opacity: 0 }}
@@ -70,6 +71,7 @@ const Navigation = () => {
           </div>
         </div>
       </motion.nav>
+      <ThemeButton className="absolute right-5" />
     </div>
   );
 };

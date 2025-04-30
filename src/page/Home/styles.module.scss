@@ -1,0 +1,33 @@
+.home {
+  width: 470px;
+  height: 200px;
+  display: flex;
+
+  img {
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    width: 250px;
+    height: 380px;
+
+    img {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      button {
+        margin-top: 20px;
+      }
+    }
+  }
+}

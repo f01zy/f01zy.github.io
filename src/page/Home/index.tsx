@@ -7,15 +7,16 @@ import { useAppSelector } from "@/hooks/selector.hook";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import styles from "@/page/Home/styles.module.scss";
 
 const Home = () => {
   const [step, setStep] = useState<number>(0)
   const isAboutTyping = useAppSelector(s => s.utils.isAboutTyping)
   const speed = 80
 
-  return <div style={{ width: "470px", height: "200px", display: "flex" }}>
-    <Image src={avatar} alt="Avatar" width={200} height={200} quality={100} priority style={{ borderRadius: "8px", marginRight: "20px" }} />
-    <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+  return <div className={styles.home}>
+    <Image src={avatar} alt="Avatar" width={200} height={200} quality={100} priority />
+    <div className={styles.container}>
       <div>
         {
           !isAboutTyping && step >= 0 && <Typing

@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 const LimitedHeight = ({ children }: Readonly<{ children: ReactNode }>) => {
   const isLimitedHeight = useAppSelector(s => s.utils.isLimitedHeight)
 
-  return <div className={`w-screen ${isLimitedHeight ? "h-screen" : ""}`}>
+  return <div className={`w-screen ${isLimitedHeight ? "h-screen overflow-y-hidden" : ""}`}>
     {children}
   </div>
 }
