@@ -1,9 +1,12 @@
 "use client"
 
+import useTheme from "@/hooks/theme.hook";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const Contact = () => {
+  const theme = useTheme()
+
   const code = `
     const contacts: Record<string, string | string[]> = {
       \tgithub: "https://github.com/f01zy",
@@ -25,10 +28,9 @@ const Contact = () => {
     <div style={{ width: "90vw" }}>
       <SyntaxHighlighter
         language="typescript"
-        style={a11yDark}
+        style={nord}
         customStyle={{
-          background: "transparent",
-          backdropFilter: "blur(200px)",
+          background: "rgba(0, 0, 0, .8)",
           border: "1px solid #fff",
           padding: "15px",
           borderRadius: "8px",
